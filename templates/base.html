@@ -1,0 +1,95 @@
+{% extends "bootstrap/base.html" %}
+
+
+
+{% block title %}{% endblock %}
+
+{% block navbar %}
+
+
+
+
+<nav class="navbar navbar-inverse">
+
+    <div class="container">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Tierra Inc.</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav">
+
+                {% if 'username' in session %}
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"> Clientes
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/lista_de_clientes" class="dropdown-item">Lista de Clientes</a></li>
+                        <li><a href="/agregar_cliente" class="dropdown-item">Agregar Cliente</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"> Consultas
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/consultas_pais" class="dropdown-item">Clientes por País</a> </li>
+                        <li><a href="/consultas_edad" class="dropdown-item">Clientes por Edad</a> </li>
+                        <li><a href="/consultas_fecha" class="dropdown-item">Clientes por Fecha</a> </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"> Productos
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/lista_de_productos" class="dropdown-item">Lista de Productos</a> </li>
+                        <li><a href="/agregar_producto" class="dropdown-item">Agregar Producto</a> </li>
+
+                    </ul>
+                </li>
+
+                <li><a href="/sobre">Sobre</a></li>
+                {% else %}
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                {% endif %}
+            </ul>
+
+            <!-- Barra de Navegar a la derecha -->
+            <ul class="nav navbar-nav navbar-right">
+                {% if 'username' in session %}
+                <li float: right><a href="/salir">Salir</a></li>
+                {% else %}
+                <li><a href="/ingresar">Ingresar</a></li>
+                <li><a href="/registrarse">Registrarse</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <!-- Botón de cierre -->
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    <body>
+        {% block page_content %}{% endblock %}
+    </body>
+</div>
+
+{% endblock %}

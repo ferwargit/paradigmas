@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Agregar Cliente{% endblock %}
+
+{% block page_content %}
+<div><h1>Agregar Cliente</h1></div>
+<div class="page-header">
+    {{ wtf.quick_form(nuevo_cliente) }}
+</div>
+{% endblock %}

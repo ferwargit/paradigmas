@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Consultas{% endblock %}
+
+{% block page_content %}
+
+<body>
+  <div>
+    <h2>Resultado de su consulta</h2>
+    <p>Se encontraror {{ cantidad }} clientes.</p>
+    <table class="table table-striped table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          {% for campo in encabezado_csv %}
+          <th>{{campo}}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for campo in resultado%}
+        <tr>
+          {% for valor in campo %}
+          <td>{{valor}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+{% endblock %}

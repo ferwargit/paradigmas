@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block page_content %}
+
+<body>
+    <div class="page-header">
+        <h1>Lista de Productos</h1>
+    </div>
+    <p>Cantidad de Productos: {{cantidad_productos}}</p>
+
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+
+        {% for tabla in productos_data %}
+        <tr>
+            <td>{{ tabla["Código"] }}</td>
+            <td>{{ tabla["Descripción"] }}</td>
+            <td>{{ tabla["Precio"] }}</td>
+            <td>{{ tabla["Stock"] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+{% endblock %}
